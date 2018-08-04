@@ -29,7 +29,7 @@ export class ListagemComponent {
     this.fotoService.remover(foto._id)
     .subscribe(
       () => {
-        this.mensagem.mensagem = 'Foto' + foto.titulo + ' removida com sucesso =)';
+        this.mensagem.mensagem = 'Foto ' + foto.titulo + ' removida com sucesso =)';
         this.mensagem.classe = Classe.success;
         
         this.listaFotos = this.listaFotos.filter(l => l._id != foto._id);

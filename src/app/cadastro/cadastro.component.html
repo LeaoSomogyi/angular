@@ -39,8 +39,8 @@
         </form>
         <aside class="col-md-5">
             <h4>Preview</h4>
-            <caelumpic-painel [foto]="foto" class="col-md-4 mb-4" *ngIf="foto.url != ''">
-                <caelumpic-foto [foto]="foto"></caelumpic-foto>
+            <caelumpic-painel [foto]="foto" class="col-md-4 mb-4" *ngIf="foto.url != '' && foto.url != null && foto != null">
+                <caelumpic-foto [foto]="foto" *ngIf="foto != null && foto.url != null"></caelumpic-foto>
             </caelumpic-painel>
         </aside>
     </section>
