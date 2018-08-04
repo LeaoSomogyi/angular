@@ -1,0 +1,47 @@
+<h4 class="text-center">{{titulo}}</h4>
+<main class="container">
+    <section class="row">
+        <div class="col-md-7" *ngIf="mensagem.mensagem != ''">
+            <caelumpic-mensagem [mensagem]="mensagem"></caelumpic-mensagem>
+        </div>
+        <form (ngSubmit)="salvar()" class="col-md-7" [formGroup]="formCadastro">
+            <div class="form-group">
+                <label>Título</label>
+                <input formControlName="titulo" (keyup)="onKey($event)" type="text" class="form-control" />
+                <div *ngIf="!formCadastro.controls.titulo.valid">
+                    <caelumpic-mensagem [mensagem]="getErro(formCadastro.controls.titulo)"
+                    *ngIf="formCadastro.controls.titulo.errors.required && formCadastro.controls.titulo.touched">
+                    </caelumpic-mensagem>
+                    <caelumpic-mensagem [mensagem]="getErro(formCadastro.controls.titulo)"
+                    *ngIf="formCadastro.controls.titulo.errors.minlength && formCadastro.controls.titulo.touched">
+                    </caelumpic-mensagem>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>URL</label>
+                <input formControlName="url" (keyup)="onKey($event)" type="text" class="form-control" />
+                <div *ngIf="!formCadastro.controls.url.valid">
+                    <caelumpic-mensagem [mensagem]="getErro(formCadastro.controls.url)" *ngIf="formCadastro.controls.url.errors.required && formCadastro.controls.url.touched">
+                    </caelumpic-mensagem>
+                    <caelumpic-mensagem [mensagem]="getErro(formCadastro.controls.url)" *ngIf="formCadastro.controls.url.errors.minlength && formCadastro.controls.url.touched">
+                    </caelumpic-mensagem>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea formControlName="descricao" (keyup)="onKey($event)" class="form-control"></textarea>
+            </div>
+            <button class="btn btn-primary" [disabled]="formCadastro.invalid">
+                {{botao}}
+            </button>
+
+            <a routerLink="" class="btn btn-default">Home</a>
+        </form>
+        <aside class="col-md-5">
+            <h4>Preview</h4>
+            <caelumpic-painel [foto]="foto" class="col-md-4 mb-4" *ngIf="foto.url != ''">
+                <caelumpic-foto [foto]="foto"></caelumpic-foto>
+            </caelumpic-painel>
+        </aside>
+    </section>
+</main>
